@@ -9,9 +9,11 @@ class UrlsShortersController < ApplicationController
 
   # GET /urls_shorters/1 or /urls_shorters/1.json
   def show
-    @url_shorter = UrlsShorter.find_by(url_short: params[:url_short])
+   
+    @url_shorter = current_user.urls_shorters.find_by(url_short: params[:url_short])
     
       redirect_to @urls_shorter.clean
+
   end
 
   # GET /urls_shorters/new
