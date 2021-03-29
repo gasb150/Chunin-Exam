@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :urls_shorters
   get '/urls_shorters/:short', to: 'links#show', as: :short
   root 'urls_shorters#index'
