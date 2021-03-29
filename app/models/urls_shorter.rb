@@ -1,6 +1,6 @@
 class UrlsShorter < ApplicationRecord
 
-
+    belongs_to :user
     before_create :to_short_url, :clean
     
     def to_short_url

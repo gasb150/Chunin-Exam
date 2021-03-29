@@ -25,9 +25,10 @@ class UrlsShortersController < ApplicationController
 
   # POST /urls_shorters or /urls_shorters.json
   def create
-    @urls_shorter = UrlsShorter.new(urls_shorter_params)
-    @urls_shorter.url_short = @url_shorter.to_short_url
-    @urls_shorter.url_long = @url_shorter.clean
+ 
+    @urls_shorter = current_user.urls_shorters.new(urls_shorter_params)
+    @urls_shorter.url_short = @urls_shorter.to_short_url
+    @urls_shorter.url_long = @urls_shorter.clean
 
     respond_to do |format|
       if @urls_shorter.save
@@ -37,7 +38,8 @@ class UrlsShortersController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @urls_shorter.errors, status: :unprocessable_entity }
       end
-    end
+ 
+  end
   end
 
   # PATCH/PUT /urls_shorters/1 or /urls_shorters/1.json
