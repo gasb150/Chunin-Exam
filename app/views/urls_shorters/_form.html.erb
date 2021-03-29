@@ -1,0 +1,11 @@
+<%= simple_form_for(@urls_shorter) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+  <%= f.input :url_long, class: 'article_title', placeholder: 'Yor title here' %>
+ 
+    <%= f.submit %>
+  
+  </div>
+<% end %>
